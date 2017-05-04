@@ -3,8 +3,7 @@ theme: jekyll-theme-minimal
 
 title: Artes
 locale: en_US
-description: A model for integrated water supply management in L.A. County. <br><br> Developed at the California Center for Sustainable Communities at UCLA. <br><br> Principal Architect: Erik Porse <br><br> Principal Investigator: Stephanie Pincetl <br><br> http://waterhub.ucla.edu
-
+description: A model for integrated water supply management in L.A. County. Developed at the California Center for Sustainable Communities at UCLA. 
 url: https://github.com/erikporse/artes
 
 
