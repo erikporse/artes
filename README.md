@@ -5,7 +5,7 @@ _The history of the growth and development of Los Angeles... reveals its conscio
 Welcome to the repository for <i>Artes</i>, an integrated model of urban water resources in metropolitan Los Angeles. It  analyzes the potential for enhanced local water supplies in LA.<br><br>
 The model is a product of the [California Center for Sustainable Communities](https://www.ioes.ucla.edu/ccsc/) at UCLA. <br><br>
 Learn more about LA water management at the [The LA Water Hub](http://waterhub.ucla.edu) <br>
-Github site: https://erikporse.github.io/artes/<br><br>
+Github site: https://erikporse.github.io/artes/<br>
 
 ### Cast and Crew
 **Principal Architect:** Erik Porse <br>
