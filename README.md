@@ -7,8 +7,8 @@ Github site: https://erikporse.github.io/artes/
 
 ### Team
 **Principal Architect:** Erik Porse <br>
-**Principal Investigator:** Stephanie Pincetl <br><br>
-**Contributors and Collaborators**: <br>
+**Principal Investigator:** Stephanie Pincetl
+**Contributors and Collaborators**: 
 Katie Mika, Mark Gold, Madelyn Glickfeld, and Kartiki Naik at UCLA <br>
 Terri Hogue and Kimberly Manago at the [Hogue Hydrology Group](http://inside.mines.edu/THOGUE-home), Colorado School of Mines <br>
 Diane Pataki and Liza Litvak at the [Urban Ecology Lab](http://bioweb.biology.utah.edu/pataki/), University of Utah
