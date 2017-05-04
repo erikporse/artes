@@ -7,7 +7,7 @@ Github site: https://erikporse.github.io/artes/<br><br>
 
 _The history of the growth and development of Los Angeles... reveals its conscious use of water as a tool to build the “great metropolis of the Pacific”_ -- Vincent Ostrom, 1962
 
-### Team
+### Cast and Crew
 **Principal Architect:** Erik Porse <br>
 **Principal Investigator:** Stephanie Pincetl <br>
 **Contributors and Collaborators**: <br>
@@ -16,10 +16,10 @@ Terri Hogue and Kimberly Manago at the [Hogue Hydrology Group](http://inside.min
 Diane Pataki and Liza Litvak at the [Urban Ecology Lab](http://bioweb.biology.utah.edu/pataki/), University of Utah
 
 ### What's Here
-The repository contains source code, model data, and a descriptive manual of the manual. <br><br>
+The repository contains source code, model data, and a descriptive manual of the model. <br>
 
-**Manual**
-A manual with documentation on model operations, development, and workflow.
+**Manual**<br>
+Documentation on model operations, development, and workflow.
 
 **Code**<br>
 - Model source code for the JWRPM study referenced below. Scripted in Python, it builds the model, interacts with the solver, and manages inputs and outputs. (LASM_31Dec16.py). <br>
