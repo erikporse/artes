@@ -5,18 +5,16 @@ The model is a product of the [California Center for Sustainable Communities](ht
 Learn more about LA water management at the [The LA Water Hub](http://waterhub.ucla.edu) <br>
 Github site: https://erikporse.github.io/artes/<br><br>
 
-_The history of the growth and development of Los Angeles... reveals its conscious use of water as a tool to build the “great metropolis of the Pacific”_ -- Vincent Ostrom, 1962
-
 ### Cast and Crew
 **Principal Architect:** Erik Porse <br>
 **Principal Investigator:** Stephanie Pincetl <br>
 **Contributors and Collaborators**: <br>
 Katie Mika, Mark Gold, Madelyn Glickfeld, and Kartiki Naik at UCLA <br>
 Terri Hogue and Kimberly Manago at the [Hogue Hydrology Group](http://inside.mines.edu/THOGUE-home), Colorado School of Mines <br>
-Diane Pataki and Liza Litvak at the [Urban Ecology Lab](http://bioweb.biology.utah.edu/pataki/), University of Utah
+Diane Pataki and Liza Litvak at the [Urban Ecology Lab](http://bioweb.biology.utah.edu/pataki/), University of Utah<br>
 
 ### What's Here
-The repository contains source code, model data, and a descriptive manual of the model. <br>
+The repository contains source code, model data, and a descriptive manual of the model.
 
 **Manual**<br>
 Documentation on model operations, development, and workflow.
@@ -24,7 +22,7 @@ Documentation on model operations, development, and workflow.
 **Code**<br>
 - Model source code for the JWRPM study referenced below. Scripted in Python, it builds the model, interacts with the solver, and manages inputs and outputs. (LASM_31Dec16.py). <br>
 - Scripts for aggregating sub-watersheds from the WMMS hydrologic model to the sub-watershed zones used in Artes (Located in Hydrology folder)
-- R scripts for plotting watershed and wastewater treatment plant outflows for comparing and calibrating (Plots.r)<br><br>
+- R scripts for plotting watershed and wastewater treatment plant outflows for comparing and calibrating (Plots.r)<br>
 
 **Hydrology Folder**
 - A mash of relatively unorganized scripts and data derived from the LA County WMMS model, which provides hydrologic inputs and is used for calibrating optimization in _Artes_.<br><br>
