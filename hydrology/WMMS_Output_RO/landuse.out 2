@@ -1,0 +1,24 @@
+TT-----------------------------------------------------------------------------------------
+TT LSPC -- Loading Simulation Program, C++
+TT Version 4.1.0 - April 11, 2011
+TT
+TT Designed and maintained by:
+TT     Tetra Tech, Inc.
+TT     10306 Eaton Place, Suite 340
+TT     Fairfax, VA 22030
+TT     (703) 385-6000
+TT-----------------------------------------------------------------------------------------
+TT LSPC MODEL LANDUSE SUMMARY HEADER FILE
+TT This header file was created at 03:04:54pm on 06/01/2016
+TT Output start time:  1/4/1986
+TT Output end time:    4/28/2012
+TT Simulation time step:   60 min
+TT Label   
+TT PREC     total precipitation (rain + snow) volume (in-acre/year)
+TT SURO     total surface outflow rate volume (in-acre/year)
+TT IFWO     total interflow outflow rate volume (in-acre/year)
+TT AGWO     total groundwater outflow rate volume (in-acre/year)
+TT PERO     total outflow rate volume (in-acre/year)
+TT TAET     total actual evapo-transpiration volume (in-acre/year)
+TT
+TT     This is header file for the landuse summary file landuse.csv

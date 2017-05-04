@@ -1,0 +1,54 @@
+TT-----------------------------------------------------------------------------------------
+TT LSPC -- Loading Simulation Program, C++
+TT Version 4.1.0 - April 11, 2011
+TT
+TT Designed and maintained by:
+TT     Tetra Tech, Inc.
+TT     10306 Eaton Place, Suite 340
+TT     Fairfax, VA 22030
+TT     (703) 385-6000
+TT-----------------------------------------------------------------------------------------
+TT LSPC MODEL LANDUSE SUMMARY HEADER FILE
+TT This header file was created at 03:26:30pm on 06/05/2016
+TT Output start time:  1/4/1986
+TT Output end time:    4/28/2012
+TT Simulation time step:   60 min
+TT Label   
+TT PREC     total precipitation (rain + snow) volume (in-acre/year)
+TT SURO     total surface outflow rate volume (in-acre/year)
+TT IFWO     total interflow outflow rate volume (in-acre/year)
+TT AGWO     total groundwater outflow rate volume (in-acre/year)
+TT PERO     total outflow rate volume (in-acre/year)
+TT TAET     total actual evapo-transpiration volume (in-acre/year)
+TT SEDLOAD  sediments load from land (tons/year)
+TT SO_TN surface flux of QUAL TN (lb/year) 
+TT IO_TN interflow flux of QUAL TN (lb/year) 
+TT AO_TN groundwater flux of QUAL TN (lb/year) 
+TT PO_TN total flux of QUAL TN (lb/year) 
+TT SED_TN total flux of sediment associated QUAL TN (lb/year) 
+TT SO_TP surface flux of QUAL TP (lb/year) 
+TT IO_TP interflow flux of QUAL TP (lb/year) 
+TT AO_TP groundwater flux of QUAL TP (lb/year) 
+TT PO_TP total flux of QUAL TP (lb/year) 
+TT SED_TP total flux of sediment associated QUAL TP (lb/year) 
+TT SO_TCu surface flux of QUAL TCu (lb/year) 
+TT IO_TCu interflow flux of QUAL TCu (lb/year) 
+TT AO_TCu groundwater flux of QUAL TCu (lb/year) 
+TT PO_TCu total flux of QUAL TCu (lb/year) 
+TT SED_TCu total flux of sediment associated QUAL TCu (lb/year) 
+TT SO_TPb surface flux of QUAL TPb (lb/year) 
+TT IO_TPb interflow flux of QUAL TPb (lb/year) 
+TT AO_TPb groundwater flux of QUAL TPb (lb/year) 
+TT PO_TPb total flux of QUAL TPb (lb/year) 
+TT SED_TPb total flux of sediment associated QUAL TPb (lb/year) 
+TT SO_TZn surface flux of QUAL TZn (lb/year) 
+TT IO_TZn interflow flux of QUAL TZn (lb/year) 
+TT AO_TZn groundwater flux of QUAL TZn (lb/year) 
+TT PO_TZn total flux of QUAL TZn (lb/year) 
+TT SED_TZn total flux of sediment associated QUAL TZn (lb/year) 
+TT SO_FECAL surface flux of QUAL FECAL (#/year) 
+TT IO_FECAL interflow flux of QUAL FECAL (#/year) 
+TT AO_FECAL groundwater flux of QUAL FECAL (#/year) 
+TT PO_FECAL total flux of QUAL FECAL (#/year) 
+TT
+TT     This is header file for the landuse summary file landuse.csv

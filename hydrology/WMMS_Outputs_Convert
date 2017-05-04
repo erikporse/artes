@@ -1,0 +1,86 @@
+import numpy as np
+import matplotlib as plt
+import sys
+import os
+import math
+
+sys.path.append('.../Output')
+path = '.../Output'
+path2 = '.../Full Run 1986-2011'
+path3 = '.../Artes Regions'
+
+
+print(path)
+
+
+filename = []
+year = ["1996","1997","1998","1999","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012"]
+month = ["1","2","3","4","5","6","7","8","9","10","11","12"]
+day = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"]
+
+
+fname_in = path + "/" + "WSID_List.xlsx'
+
+workbook = xlrd.open_workbook(fname_in, encoding_override="utf_8")
+
+
+data_sws = dict.fromkeys(filename)
+data_vals = dict.fromkeys(filename)
+
+for n in filename:
+    f = open(path + "/" + n + ".out", "r")
+    columns = []
+
+    for l,line in enumerate(f):
+        line = line.strip()
+        column = line.split()
+        if l > 18:
+            columns.append(column)
+
+    f.close()
+    data_sws[n] = columns
+
+
+recharge_by_day = dict.fromkeys(filename)
+recharge_by_month_full = dict.fromkeys(filename)
+recharge_by_month = dict.fromkeys(filename)
+
+for n in filename:
+    params1 = []
+    values = []
+    for l in range(len(columns)):
+        y = data_sws[n][l][1]
+        m = data_sws[n][l][2]
+        d = data_sws[n][l][3]
+        v = data_sws[n][l][6]
+        params1.append([y,m,d])
+        values.append(v)
+    recharge_by_day[n] = [params1,values]
+
+month_sum = 0
+
+f = open(path + "/" + "recharge2.txt", "ab")
+for n in filename:
+    params2 = []
+    for y in year:
+        for m in month:
+            params2.append([y,m])
+            month_sum = 0
+            for l in range(len(recharge_by_day[n][0])):
+                #print l,y,m,month_sum, recharge_by_day[n][0][l], recharge_by_day[n][1][l][0]
+                if y == recharge_by_day[n][0][l][0] and m == recharge_by_day[n][0][l][1]:
+                    month_sum = month_sum + float(recharge_by_day[n][1][l])
+            recharge_by_month_full[n] = [params2,month_sum]
+            recharge_by_month[n] = [recharge_by_month_full[n][-2][-1],recharge_by_month_full[n][-1]]
+            print >> f,n,y,m,recharge_by_month_full[n][-1]
+            #recharge_write = [n,recharge_by_month[n]]
+            #f.write(recharge_write)
+
+#print recharge_by_month
+
+
+#for n in filename:
+#    for monthly_recharge in recharge_by_month[n]:
+        #print monthly_recharge
+#        f.write("%s\n" % monthly_recharge)
+#f.close()

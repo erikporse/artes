@@ -1,0 +1,28 @@
+TT-----------------------------------------------------------------------------------------
+TT LSPC -- Loading Simulation Program, C++
+TT Version 4.1.0 - April 11, 2011
+TT
+TT Designed and maintained by:
+TT     Tetra Tech, Inc.
+TT     10306 Eaton Place, Suite 340
+TT     Fairfax, VA 22030
+TT     (703) 385-6000
+TT-----------------------------------------------------------------------------------------
+TT LSPC MODEL STREAM SUMMARY HEADER FILE
+TT This header file was created at 03:04:54pm on 06/01/2016
+TT Output start time:  1/4/1986
+TT Output end time:    4/28/2012
+TT Simulation time step:   60 min
+TT Label   
+TT USIF     upstream inflow rate volume (ft^3/year)
+TT LUIF     land inflow rate volume (ft^3/year)
+TT USBP     upstream bypass inflow rate volume (ft^3/year)
+TT LUBP     land bypass flow rate volume (ft^3/year)
+TT PSIF     pointsource inflow rate volume (ft^3/year)
+TT PSWD     pointsource withdrawal rate volume (ft^3/year)
+TT PSDT     diverted target pointsource withdrawal rate volume (ft^3/year)
+TT IVOL     total inflow rate volume (ft^3/year)
+TT RO       outflow volume for each outlet (ft^3/year)
+TT BP       bypass volume for each outlet (ft^3/year)
+TT
+TT     This is header file for the stream summary file stream.csv
