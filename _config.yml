@@ -37,3 +37,4 @@ comments: true
 owner:
   name: Erik Porse
   
+theme: jekyll-theme-cayman
