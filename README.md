@@ -1,5 +1,7 @@
 ## Modeling Water in Los Angeles
 
+_The history of the growth and development of Los Angeles... reveals its conscious use of water as a tool to build the “great metropolis of the Pacific”_ -- Vincent Ostrom, 1962 
+
 Welcome to the repository for <i>Artes</i>, an integrated model of urban water resources in metropolitan Los Angeles. It  analyzes the potential for enhanced local water supplies in LA.<br><br>
 The model is a product of the [California Center for Sustainable Communities](https://www.ioes.ucla.edu/ccsc/) at UCLA. <br><br>
 Learn more about LA water management at the [The LA Water Hub](http://waterhub.ucla.edu) <br>
