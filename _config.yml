@@ -3,8 +3,7 @@ theme: jekyll-theme-minimal
 
 title: Artes
 locale: en_US
-description: A model for integrated water supply management in L.A. County.
-description: A model for integrated water supply management in L.A. County. 
+description: A model for integrated water supply management in L.A. County. Developed at the California Center for Sustainable Communities at UCLA.
 
 url: https://github.com/erikporse/artes
 
