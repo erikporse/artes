@@ -1,4 +1,24 @@
-## Welcome to GitHub Pages
+## Modeling Water in Los Angeles
+
+Welcome to the repository for <i>Artes</i>, an integrated model of urban water resources in metropolitan Los Angeles.
+
+### Team
+Principal Architect: Erik Porse <br>
+Principal Investigator: Stephanie Pincetl <br>
+Contributors and Collaborators: Katie Mika, Mark Gold, Terri Hogue, Diane Pataki, Elizaveta Litvak, Kimberly Manago, Madelyn Glickfeld, Kartiki Naik
+
+### What's Here
+The repository contains source code, model data, and a descriptive manual of the manual. 
+
+### Support
+This work was supported by the Water Sustainability, & Climate Program at the National Science Foundation (NSF Award # 1204235), the Los Angeles Bureau of Sanitation, and the John Randolph Haynes and Dora Haynes Foundation. 
+
+### Reference
+Porse, Erik C., Kathryn B. Mika, Elizabeth Litvak, Kim Manago, Kartiki Naik, Madelyn Glickfeld, Terri Hogue, Mark Gold, Diane Pataki, and Stephanie Pincetl. “Systems Analysis and Optimization of Local Water Supplies in Los Angeles.” _Journal of Water Resources Planning and Management_. (In Press)
+
+### More Information
+[Link](http://waterhub.ucla.edu) The LA Water Hub
+
 
 You can use the [editor on GitHub](https://github.com/erikporse/artes/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
@@ -26,16 +46,4 @@ Syntax highlighted code block
 [Link](url) and ![Image](src)
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/erikporse/artes/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
-
-
-https://erikporse.github.io/artes
-http://waterhub.ucla.edu
