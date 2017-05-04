@@ -1,5 +1,5 @@
 # Site wide configuration
-theme: jekyll-theme-tactile
+theme: jekyll-theme-midnight
 
 title: Artes
 locale: en_US
