@@ -22,10 +22,10 @@ Documentation on model operations, development, and workflow.
 **Code**<br>
 - Model source code for the JWRPM study referenced below. Scripted in Python, it builds the model, interacts with the solver, and manages inputs and outputs. (LASM_31Dec16.py). <br>
 - Scripts for aggregating sub-watersheds from the WMMS hydrologic model to the sub-watershed zones used in Artes (Located in Hydrology folder)
-- R scripts for plotting watershed and wastewater treatment plant outflows for comparing and calibrating (Plots.r)<br>
+- R scripts for plotting watershed and wastewater treatment plant outflows for comparing and calibrating (Plots.r)
 
 **Hydrology Folder**
-- A mash of relatively unorganized scripts and data derived from the LA County WMMS model, which provides hydrologic inputs and is used for calibrating optimization in _Artes_.<br><br>
+- A mash of relatively unorganized scripts and data derived from the LA County WMMS model, which provides hydrologic inputs and is used for calibrating optimization in _Artes_.
 
 **Data**
 - Database with all model data inputs. Three databases are included. The first includes full demands and full historic imported water supplies (LASM_Data_D100_S100). The second includes full demands and no imported water (LASM_Data_D100_S0). The third includes agreesive conservation and no imported water supplies (LASM_Data_SP_S0). More documentation available in the manual and the JWRPM study describes development of methods and results. Spreadsheets are not cleaned up for prime time as of yet and contained links between some tables/sheets.
