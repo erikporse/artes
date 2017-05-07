@@ -2,18 +2,20 @@
 #
 # Artes: Modeling Water Management in Los Angeles for Local Water Supplies
 #
-# © Erik Porse
+# Copyright Erik Porse
 # California Center for Sustainability Communities at UCLA
 # May 2017
 #
 # http://waterhub.ucla.edu
 #
 # Permission and use permitted with attribution.
+# Creative Commons Attribution 4.0 International License
+#
 # Please cite the reference below when using or adapting code:
 #
 # Porse, Erik C., Kathryn B. Mika, Elizabeth Litvak, Kim Manago, Kartiki Naik,
 #  Madelyn Glickfeld, Terri Hogue, Mark Gold, Diane Pataki, and Stephanie Pincetl.
-#  “Systems Analysis and Optimization of Local Water Supplies in Los Angeles.”
+#  Systems Analysis and Optimization of Local Water Supplies in Los Angeles.
 #  Journal of Water Resources Planning and Management. (In Press)
 #
 ##################################################################################
