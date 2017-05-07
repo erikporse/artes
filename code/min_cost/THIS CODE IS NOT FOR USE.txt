@@ -1,5 +1,0 @@
-May 2017. 
-
-This model is good code waiting for some good data.
-
-The associated database (LASM_Data_D100_S100_E.xlsx) has dummy values for economic costs and damages. Do not use until this are properly updated.
