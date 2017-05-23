@@ -1,0 +1,21 @@
+**********************************************
+*
+* Shape files for the Artes model
+* Datasets are described below
+*
+* Citation: 
+* Porse, Erik. 2017. Artes: A model of water supply management in Los Angeles. California * Center for Sustainable Communities. University of California, Los Angeles. URL: https://* erikporse.github.io/artes/ 
+*
+* c. 2017
+*
+**********************************************
+
+1) Hydrologic regions in Artes
+- two sets of shape files are included, both derived from the LA County Watershed Management Modeling System (WMMS). 
+
+First, a set of metro LA County watersheds with all WMMS sub-watersheds delineated as separate polygons (WMMS_Disaggregated.zip).
+Second, a set of metro LA County watersheds that aggregates the smaller WMMS sub-watersheds (Artes Aggregated.zip).
+
+The WMMS watershed codes associated with Artes watershed regions are listed in the spreadsheet “Artes Hydro Regions.xlsx”
+
+This is the minimum set of watersheds for LA County necessary to model major infrastructure (spreading basins, dams) and river features as part of a water balance. 
