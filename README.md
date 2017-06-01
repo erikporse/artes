@@ -26,13 +26,18 @@ _Code_<br>
 - Scripts for aggregating sub-watersheds from the WMMS hydrologic model to the sub-watershed zones used in Artes (Located in Hydrology folder)
 - R scripts for plotting watershed and wastewater treatment plant outflows for comparing and calibrating (Plots.r)
 
-_Hydrology Folder_
+_Hydrology_
 - A mash of relatively unorganized scripts and data derived from the LA County WMMS model, which provides hydrologic inputs and is used for calibrating optimization in _Artes_.
 
 _Data_
 - Database with all model data inputs. Three databases are included. The first includes full demands and full historic imported water supplies (LASM_Data_D100_S100). The second includes full demands and no imported water (LASM_Data_D100_S0). The third includes agreesive conservation and no imported water supplies (LASM_Data_SP_S0). More documentation available in the manual and the JWRPM study describes development of methods and results. 
 - Example output files, which can be copied to a local folder for output. The script searches for existing output files and will return an error without them. 
 - Historic data, used in calibrating the model. This includes data for wastewater treatment and reuse plants and LA County stormwater capture basins. Source credits are provided in the model manual and documentation. 
+
+_Geo_
+- Repository of shape files used in building the link-node network of the model. 
+- Shape files of watersheds derived from the WMMS model. 
+- Shape files of LA County water retailers represented in the model, with associated data (primarily from 2010 Urban Water Management Plans).
 
 ### Support
 This work was supported by the Water Sustainability, & Climate Program at the National Science Foundation (NSF Award # 1204235), the Los Angeles Bureau of Sanitation, and the John Randolph Haynes and Dora Haynes Foundation. 
