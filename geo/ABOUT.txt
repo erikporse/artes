@@ -19,3 +19,8 @@ Second, a set of metro LA County watersheds that aggregates the smaller WMMS sub
 The WMMS watershed codes associated with Artes watershed regions are listed in the spreadsheet “Artes Hydro Regions.xlsx”
 
 This is the minimum set of watersheds for LA County necessary to model major infrastructure (spreading basins, dams) and river features as part of a water balance. 
+
+2) Agencies
+- two shape files included as used in our LA Water Hub maps
+- “MWD_members” is the shape file for MWD member agencies in LA County
+- “water_hub_retailers” is the shape file for metropolitan LA County water retailers used in the Artes model and shown via the Water Hub, with associated attributes from available data.

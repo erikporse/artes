@@ -37,7 +37,7 @@ _Data_
 _Geo_
 - Repository of shape files used in building the link-node network of the model. 
 - Shape files of watersheds derived from the WMMS model. 
-- Shape files of LA County water retailers represented in the model, with associated data (primarily from 2010 Urban Water Management Plans).
+- Shape files of LA County water retailers represented in the model and mapped on the [The LA Water Hub](http://waterhub.ucla.edu), with associated data (primarily from 2010 Urban Water Management Plans). Includes shape files for both water retailers and MWD member agencies. Some agencies are members of both data sets. 
 
 ### Support
 This work was supported by the Water Sustainability, & Climate Program at the National Science Foundation (NSF Award # 1204235), the Los Angeles Bureau of Sanitation, and the John Randolph Haynes and Dora Haynes Foundation. 
