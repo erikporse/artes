@@ -32,7 +32,7 @@ _Hydrology_
 _Data_
 - Database with all model data inputs. Three databases are included. The first includes full demands and full historic imported water supplies (LASM_Data_D100_S100). The second includes full demands and no imported water (LASM_Data_D100_S0). The third includes agreesive conservation and no imported water supplies (LASM_Data_SP_S0). More documentation available in the manual and the JWRPM study describes development of methods and results. 
 - Example output files, which can be copied to a local folder for output. The script searches for existing output files and will return an error without them. 
-- Historic data, used in calibrating the model. This includes data for wastewater treatment and reuse plants and LA County stormwater capture basins. Source credits are provided in the model manual and documentation. 
+- Historic data, used in calibrating or populating the model. This includes data for wastewater treatment and reuse plants and LA County stormwater capture basins, along with an analysis of historical and current pumping rights in groundwater basins (<i>see Porse et al, 2015, Geojournal</i>). Source credits are provided in the model manual and documentation. 
 
 _Geo_
 - Repository of shape files used in building the link-node network of the model. 
