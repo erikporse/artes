@@ -43,6 +43,6 @@ _Geo_
 This work was supported by the Water Sustainability, & Climate Program at the National Science Foundation (NSF Award # 1204235), the Los Angeles Bureau of Sanitation, and the John Randolph Haynes and Dora Haynes Foundation. 
 
 ### Citing Research and the Model
-Porse, Erik C., Kathryn B. Mika, Elizabeth Litvak, Kim Manago, Kartiki Naik, Madelyn Glickfeld, Terri Hogue, Mark Gold, Diane Pataki, and Stephanie Pincetl. “Systems Analysis and Optimization of Local Water Supplies in Los Angeles.” _Journal of Water Resources Planning and Management_. (In Press)
+Porse, Erik, Kathryn B. Mika, Elizaveta Litvak, Kimberly F. Manago, Kartiki Naik, Madelyn Glickfeld, Terri S. Hogue, Mark Gold, Diane E. Pataki, and Stephanie Pincetl10. "Systems Analysis and Optimization of Local Water Supplies in Los Angeles." Journal of Water Resources Planning and Management. Vol. 143, no. 9 (2017).
 
 Porse, Erik C., Artes: A Model of Urban Water Resources Management in Los Angeles. UCLA California Center for Sustainable Communities, Los Angeles, CA, 2017; URL: https://erikporse.github.io/artes/.
