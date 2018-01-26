@@ -16,7 +16,7 @@ Terri Hogue and Kimberly Manago at the [Hogue Hydrology Group](http://inside.min
 Diane Pataki and Liza Litvak at the [Urban Ecology Lab](http://bioweb.biology.utah.edu/pataki/), University of Utah<br>
 
 ### What's Here
-The repository contains source code, model data, and a descriptive manual of the model.
+The repository contains source code, data, and a descriptive manual of the model.
 
 _Manual_<br>
 Documentation on model operations, development, and workflow.
