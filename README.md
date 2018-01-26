@@ -22,7 +22,7 @@ _Manual_<br>
 Documentation on model operations, development, and workflow.
 
 _Code_<br>
-- Model source code for the JWRPM study referenced below. Scripted in Python, it builds the model, interacts with the solver, and manages inputs and outputs. (LASM_31Dec16.py). <br>
+- Model source code, including multiple versions used in studies for various applications (on-going). Scripted in Python, the code builds the model, interacts with the solver, and manages inputs and outputs. (LASM_31Dec16.py, for example). <br>
 - Scripts for aggregating sub-watersheds from the WMMS hydrologic model to the sub-watershed zones used in Artes (Located in Hydrology folder)
 - R scripts for plotting watershed and wastewater treatment plant outflows for comparing and calibrating (Plots.r)
 
