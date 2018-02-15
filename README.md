@@ -22,15 +22,16 @@ _Manual_<br>
 Documentation on model operations, development, and workflow.
 
 _Code_<br>
-- Model source code, including multiple versions used in studies for various applications (on-going). Scripted in Python, the code builds the model, interacts with the solver, and manages inputs and outputs. (LASM_31Dec16.py, for example). <br>
+- Model source code, including multiple versions used in studies for applications maximizing local sources, minimizing costs, and simulating groundwater exchange pools. Scripted in Python, the code builds the model, interacts with the solver, and manages inputs and outputs. (LASM_31Dec16.py, for example). <br>
 - Scripts for aggregating sub-watersheds from the WMMS hydrologic model to the sub-watershed zones used in Artes (Located in Hydrology folder)
 - R scripts for plotting watershed and wastewater treatment plant outflows for comparing and calibrating (Plots.r)
 
 _Hydrology_
-- A mash of relatively unorganized scripts and data derived from the LA County WMMS model, which provides hydrologic inputs and is used for calibrating optimization in _Artes_.
+- A mash of moderately organized scripts and data derived from the LA County WMMS model, which provides hydrologic inputs and is used for calibrating optimization in _Artes_.
 
 _Data_
-- Database with all model data inputs. Three databases are included. The first includes full demands and full historic imported water supplies (LASM_Data_D100_S100). The second includes full demands and no imported water (LASM_Data_D100_S0). The third includes agreesive conservation and no imported water supplies (LASM_Data_SP_S0). More documentation available in the manual and the JWRPM study describes development of methods and results. 
+- Databases with model data inputs for three model variations: maximizing flows from local sources (Porse et al, 2017), simulating groundwater exchange pools (Porse et al, In Press), and minimizing total costs (Porse et al, In Review). 
+- Data files are named according to scenario parameters, For instance, for the max_flows scenario, databases include full demands and full historic imported water supplies (LASM_Data_D100_S100). The second includes full demands and no imported water (LASM_Data_D100_S0). The third includes agreesive conservation and no imported water supplies (LASM_Data_SP_S0). More documentation available in the manual and the JWRPM study describes development of methods and results. 
 - Example output files, which can be copied to a local folder for output. The script searches for existing output files and will return an error without them. The folder sp_scenario shows output files for the <i>Sustainability Planning</i> scenario presented in Porse (2017).
 - Historic data, used in calibrating or populating the model. This includes data for wastewater treatment and reuse plants and LA County stormwater capture basins, along with an analysis of historical and current pumping rights in groundwater basins (<i>see Porse et al, 2015, Geojournal</i>). Source credits are provided in the model manual and documentation. 
 
