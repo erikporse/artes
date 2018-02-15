@@ -1,0 +1,13 @@
+Artes Model: Version A3, Flow maximization for identifying maximum potential for local water supplies
+February 10, 2018
+c. Erik Porse, 2016-2018
+
+
+DXX = % of demands, based on 100% of 2010 values (ex. D80)
+SXX = % of supplies, based on 100% historic imported supplies (ex. S80)
+
+Model version is associated with the following study. Please cite when using code or associated data:
+
+Porse, Erik, Kathryn B. Mika, Elizaveta Litvak, Kimberly Manago, Kartiki Naik, Madelyn Glickfeld, Terri Hogue, Mark Gold, Diane Pataki, and 
+Stephanie Pincetl. 2017. “Systems Analysis and Optimization of Local Water Supplies in Los Angeles.” 
+Journal of Water Resources Planning and Management 143 (9).

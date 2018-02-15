@@ -2,9 +2,8 @@
 #
 # Artes: Modeling Water Management in Los Angeles for Local Water Supplies
 #
-# © Erik Porse
+# © Erik Porse, Erik Porse, 2016-18
 # California Center for Sustainability Communities at UCLA
-# May 2017
 #
 # http://waterhub.ucla.edu
 #
@@ -15,6 +14,12 @@
 #  Madelyn Glickfeld, Terri Hogue, Mark Gold, Diane Pataki, and Stephanie Pincetl. (2017).
 #  “Systems Analysis and Optimization of Local Water Supplies in Los Angeles.”
 #  Journal of Water Resources Planning and Management. 143(9)
+#
+# Porse, Erik, Kathryn B. Mika, Rhianna Williams, Mark Gold, William Blomquist, Stephanie Pincetl, 
+#  "Groundwater Exchange Pools and Urban Water Supply Sustainability: Modeling Directed and Undirected Networks"
+#  Journal of Water Resources Planning and Management (In Press).
+#
+# This model version has No Groundwater Exchange Pools (NSP)
 #
 ##################################################################################
 
@@ -38,16 +43,15 @@ import matplotlib.dates as mdates
 
 from gurobipy import *
 
-## CHANGE THESE PATHS TO LOCAL DRIVE ##
-fname_in = 'LASM_Data_D100_S0_Dry.xlsx'
-fname_out1 = 'LASM_FlowsRaw_Out.xlsx'
-fname_out2 = 'LASM_StoragesRaw_Out.xlsx'
-fname_out3 = 'LASM_Supplies_Out.xlsx'
-fname_out4 = 'Shadows.xlsx'
-path = ''
+fname_in = '/Users/eporse/Documents/Research/Ecology_Energy_Climate/Water Resources/Countries and Regions/California/Southern California/Systems Analysis/Artes Model/Model Runs/B2_03-24-17/LASM_Data_D100_S0_NSP.xlsx'
+fname_out1 = '/Users/eporse/Documents/Research/Ecology_Energy_Climate/Water Resources/Countries and Regions/California/Southern California/Systems Analysis/Artes Model/Output/LASM_FlowsRaw_Out.xlsx'
+fname_out2 = '/Users/eporse/Documents/Research/Ecology_Energy_Climate/Water Resources/Countries and Regions/California/Southern California/Systems Analysis/Artes Model/Output/LASM_StoragesRaw_Out.xlsx'
+fname_out3 = '/Users/eporse/Documents/Research/Ecology_Energy_Climate/Water Resources/Countries and Regions/California/Southern California/Systems Analysis/Artes Model/Output/LASM_Supplies_Out.xlsx'
+fname_out4 = '/Users/eporse/Documents/Research/Ecology_Energy_Climate/Water Resources/Countries and Regions/California/Southern California/Systems Analysis/Artes Model/Output/Shadows.xlsx'
+path = '/Users/eporse/Documents/Research/Ecology_Energy_Climate/Water Resources/Countries and Regions/California/Southern California/Systems Analysis/Artes Model/Output'
 
 # For scenarios
-demand_mult = 1.0 # Demand multiplier, for reducing demands (i.e. conservation)
+demand_mult = 0.8 # Demand multiplier, for reducing demands (i.e. conservation)
 
 # Initialize dictionaries (arrays) and vectors
 nodes = []
@@ -146,8 +150,8 @@ storage_upper_in = sheet1.col_values(16)
 
 # Reads in inflows and re-arranges array to be 3-D
 for i in range(len(nodes)):
-    inflow_in = sheet1.row_values(i,start_colx=17, end_colx=None)
-    #inflow_in = sheet1.row_values(i,start_colx=137, end_colx=None)
+    #inflow_in = sheet1.row_values(i,start_colx=17, end_colx=None)
+    inflow_in = sheet1.row_values(i,start_colx=137, end_colx=None)
     inflows_in.append(inflow_in)
 inflows_3d = numpy.zeros(shape=(len(nodes),len(years),len(months)))
 
@@ -424,8 +428,8 @@ for j in nodes:
     for y in years:
         for t in months:
             if t == 'Jan':
-                if y == '1986':
-                #if y == '1996':
+                #if y == '1986':
+                if y == '1996':
                     # sums flows when its January of the first year
                     m.addConstr(
                         quicksum(flow[i,j,y,t] for i,j in links.select('*',j)) + inflow[j,y,t] ==
@@ -599,10 +603,10 @@ for i in calib_nodes:
     for y in calib_years:
         for t in months:
             m.addConstr(
-                quicksum(flow[i,j,y,t] for i,j in links.select(i,'*')) >= 0.15 * calib_inflow[i,y,t],
+                quicksum(flow[i,j,y,t] for i,j in links.select(i,'*')) >= 0.05 * calib_inflow[i,y,t],
                     'calib-inflow_low-%s-%s-%s' % (i,y,t))
             m.addConstr(
-                quicksum(flow[i,j,y,t] for i,j in links.select(i,'*')) <= 1.5 * calib_inflow[i,y,t],
+                quicksum(flow[i,j,y,t] for i,j in links.select(i,'*')) <= 3.0 * calib_inflow[i,y,t],
                     'calib-inflow_high-%s-%s-%s' % (i,y,t))
 
 ################# END OF CALIBRATION CONSTRAINTS ########################
@@ -650,7 +654,7 @@ constraint = m.getConstrs()
 
 shadows = tablib.Dataset()
 for i in range(len(constraint)):
-    shadow = [constraint[i].getAttr("ConstrName"),constraint[i].getAttr("Pi")]
+    shadow = [constraint[i].getAttr("ConstrName"),constraint[i].getAttr("Pi"),constraint[i].getAttr("IISConstr")]
     shadows.append(shadow)
 
 ###### Print out text files #######
@@ -696,8 +700,8 @@ for j in nodes:
             value_in = quicksum(solution[i,j,y,t] for i,j in links.select('*',j))
             value_out = quicksum(solution[j,k,y,t] for j,k in links.select(j,'*'))
             if t == 'Jan':
-                if y == '1986':
-                #if y == '1996':
+                #if y == '1986':
+                if y == '1996':
                     demand = month_demand[j,t] * demand_mult
                     demands.append(demand)
                     inflow_txt = inflow[j,y,t]
@@ -972,6 +976,10 @@ print >> f12, "imported_supply", (" ".join( repr(e) for e in imported_supply_mon
 print >> f12, "imported_use", (" ".join( repr(e) for e in imported_use_month))
 print >> f12, "ocean_inflows", (" ".join( repr(e) for e in ocean_inflows_month))
 
+#### Use tablib to write out Excel file with constraints, shadows, and IIS includes
+shadows.headers = ['Constraint','Shadow Value','Included in IIS?']
+with open(fname_out4, 'wb') as f:
+   f.write(shadows.xlsx)
 
 ###### TROUBLESHOOTING #######
 

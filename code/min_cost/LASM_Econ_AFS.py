@@ -14,13 +14,16 @@
 # Please cite the reference below when using or adapting code:
 #
 # Porse, Erik C., Kathryn B. Mika, Elizabeth Litvak, Kim Manago, Kartiki Naik,
-#  Madelyn Glickfeld, Terri Hogue, Mark Gold, Diane Pataki, and Stephanie Pincetl.
+#  Madelyn Glickfeld, Terri Hogue, Mark Gold, Diane Pataki, and Stephanie Pincetl. (2017).
 #  Systems Analysis and Optimization of Local Water Supplies in Los Angeles.
-#  Journal of Water Resources Planning and Management. (In Press)
+#  Journal of Water Resources Planning and Management. 143(9)
 #
-# This model has annual foresight
+# Porse, Erik C., Kathryn B. Mika, Elizabeth Litvak, Kim Manago, Terri Hogue, Mark Gold, 
+#  Diane Pataki, and Stephanie Pincetl. (2017). "The Dollars and Sense of Local Water Supplies in Los Angeles." 
+#  (Under Review).
+#
+# This model has ANNUAL FORESIGHT
 # This model has an economic least cost formulation
-# THIS MODEL IS CODE WAITING FOR GOOD DATA. Not for use.
 #
 ##################################################################################
 
@@ -42,7 +45,7 @@ import matplotlib.dates as mdates
 
 from gurobipy import *
 
-fname_in = '/Users/eporse/Documents/Research/Ecology_Energy_Climate/Water Resources/Countries and Regions/California/Southern California/Systems Analysis/Artes Model/Model Runs/D1_05_07_17/LASM_Data_D100_S100_E.xlsx'
+fname_in = '/Users/eporse/Documents/Research/Ecology_Energy_Climate/Water Resources/Countries and Regions/California/Southern California/Systems Analysis/Artes Model/Model Runs/D2_08_23_17/LASM_Data_DHSI_S50_D2k.xlsx'
 fname_out1 = '/Users/eporse/Documents/Research/Ecology_Energy_Climate/Water Resources/Countries and Regions/California/Southern California/Systems Analysis/Artes Model/Output/LASM_FlowsRaw_Out.xlsx'
 fname_out2 = '/Users/eporse/Documents/Research/Ecology_Energy_Climate/Water Resources/Countries and Regions/California/Southern California/Systems Analysis/Artes Model/Output/LASM_StoragesRaw_Out.xlsx'
 fname_out3 = '/Users/eporse/Documents/Research/Ecology_Energy_Climate/Water Resources/Countries and Regions/California/Southern California/Systems Analysis/Artes Model/Output/LASM_Supplies_Out.xlsx'
@@ -107,6 +110,8 @@ os.remove(path + "/" + "shortages.txt")
 os.remove(path + "/" + "summary_annual.txt")
 os.remove(path + "/" + "summary_monthly.txt")
 os.remove(path + "/" + "gw_storage_pool.txt")
+os.remove(path + "/" + "costs.txt")
+
 # Create new ones
 f1 = open(path + "/" + "demands.txt", "ab")
 f2 = open(path + "/" + "inflows.txt", "ab")
@@ -119,6 +124,7 @@ f8 = open(path + "/" + "shortages.txt", "ab")
 f11 = open(path + "/" + "summary_annual.txt", "ab")
 f12 = open(path + "/" + "summary_monthly.txt", "ab")
 f13 = open(path + "/" + "gw_storage_pool.txt", "ab")
+f14 = open(path + "/" + "costs.txt", "ab")
 
 # initialize Excel file
 workbook = xlrd.open_workbook(fname_in, encoding_override="utf_8")
@@ -179,7 +185,7 @@ ann_demand_in = sheet1.col_values(2)
 for i in range(len(nodes)):
     month_demand_in = sheet1.row_values(i, start_colx=3, end_colx=15)
     month_demands_in.append(month_demand_in)
-# Annual and monthly health and saftey demands (minimum required volumes)
+# Annual and monthly health and safety & commercial/industrial demands (minimum required volumes)
 ann_hsdemand_in = sheet19.col_values(2)
 for i in range(len(nodes)):
     month_hsdemand_in = sheet19.row_values(i, start_colx=3, end_colx=15)
@@ -280,6 +286,7 @@ prev_storages_txt_full = dict.fromkeys(index, )
 curr_storages_full = dict.fromkeys(index, )
 losses_txt_full = dict.fromkeys(index, )
 shortages_txt_full = dict.fromkeys(index, )
+costs = dict.fromkeys(index, )
 
 gw_pumping = dict.fromkeys(years, )
 gw_recharge = dict.fromkeys(years, )
@@ -287,6 +294,7 @@ sw_capture = dict.fromkeys(years, )
 recycled = dict.fromkeys(years, )
 reuse = dict.fromkeys(years, )
 hyperion_recycled = dict.fromkeys(years, )
+jwpcp_recycled = dict.fromkeys(years, )
 swp_to_lacity = dict.fromkeys(years, )
 barrier_injection = dict.fromkeys(years, )
 msg_import_recharge = dict.fromkeys(years, )
@@ -354,8 +362,9 @@ for i in range(len(terminals_in)):
 
 # Link capacities- annual
 capacity_in = sheet2.col_values(3)
-# Link capacities- annual
+# Costs and benefits of moving water through a link
 unit_cost_in = sheet2.col_values(4)
+unit_benefit_in = sheet2.col_values(5)
 # Link capacities- monthly, for selected facilities (WRPs and Spreading Basins)
 month_nodes_in = sheet9.col_values(1)
 for i in range(len(month_nodes_in)):
@@ -381,6 +390,7 @@ storage_upper = dict.fromkeys(nodes, )
 storage_delta = dict.fromkeys(storage_nodes, )
 capacity = dict.fromkeys(links, )
 unit_cost = dict.fromkeys(links, )
+unit_benefit = dict.fromkeys(links, )
 month_capacity_dry = dict.fromkeys(month_nodes, )
 month_capacity_wet = dict.fromkeys(month_nodes, )
 reuse_capacity = dict.fromkeys(recycled_nodes, )
@@ -465,6 +475,9 @@ for link in range(len(links)):
 for link in range(len(links)):
     unit_cost[links[link]] = unit_cost_in[link] * 1
 
+for link in range(len(links)):
+    unit_benefit[links[link]] = unit_benefit_in[link] * 1
+
 for node in range(len(month_nodes)):
     month_capacity_dry[month_nodes[node]] = month_capacity_dry_in[node] * 1
 
@@ -491,6 +504,12 @@ for y in years:
             cost[i,j,t] = m.addVar(lb=0,obj=1.0,
                                        name='cost-%s-%s-%s' % (i,j,t))
 
+    benefits = {}  ## For stormwater capture only
+    for i,j in links:
+        for t in months:
+            benefits[i,j,t] = m.addVar(lb=0,obj=1.0,
+                                       name='benefits-%s-%s-%s' % (i,j,t))
+
     damage = {}
     for j in nodes:
         for t in months:
@@ -516,7 +535,7 @@ for y in years:
     shortage = {}
     for j in nodes:
         for t in months:
-            shortage[j,t] = m.addVar(obj=1.0,name='supplies-%s-%s' % (j,t))
+            shortage[j,t] = m.addVar(lb=0,obj=1.0,name='supplies-%s-%s' % (j,t))
 
     direct_supply = {}
     for j in nodes:
@@ -543,20 +562,26 @@ for y in years:
 
     ## Constraints ##
 
-    ######## Calculate Costs and Damages for Objective Function ###########
+    ######## Calculate Costs,  Damages, and Benefits for Objective Function ###########
     for i,j in links:
         for t in months:
             m.addConstr(
                 cost[i,j,t] == flow[i,j,t] * unit_cost[i,j],
                     'flowcost-%s-%s-%s' % (i,j,t))
 
+    # Damages from shortages
     for j in nodes:
         for t in months:
             m.addConstr(
-                damage[j,t] == shortage[j,t] * month_damage[j,t]
-            )
+                damage[j,t] == shortage[j,t] * month_damage[j,t])
 
-    # Network flow conservation for non-groundwater and storage pool nodes
+    # Benefits from stormwater capture
+    for i,j in links:
+        for t in months:
+            m.addConstr(
+                benefits[i,j,t] == quicksum(flow[i,j,t] for i,j in links.select('*',j)) * unit_benefit[i,j])
+
+    # Network flow conservation (for non-groundwater and non-storage pool nodes)
     for j in nodes:
         for t in months:
             if t == 'Jan':
@@ -599,7 +624,7 @@ for y in years:
     for j in nodes:
         for t in months:
             m.addConstr(
-                quicksum(flow[i,j,t] for i,j in links.select('*',j)) * loss_rates[j,t] <= losses[j,t],
+                quicksum(flow[i,j,t] for i,j in links.select('*',j)) * loss_rates[j,t] == losses[j,t],
                     'loss_rate-%s-%s' % (j,t))
 
     # Storage node constraints (primarily for groundwater and surface water storage nodes)
@@ -611,7 +636,14 @@ for y in years:
         for t in months:
             m.addConstr(storage[j,t] >= storage_lower[j],'ls-%s-%s' % (j,t))
 
-    # Minimum health and safety demands- cannot trade away more water than this volume
+    # Node demands: Not used if incorporating shortages
+    # for j in demand_nodes:
+    #     for t in months:
+    #         m.addConstr(
+    #             quicksum(flow[i,j,t] for i,j in links.select('*',j)) >= (month_demand[j,t] * demand_mult),
+    #             'node_demand-%s-%s' % (j,t))
+
+    # Minimum health and safety & commercial/industrial  demands- cannot trade away more water than this volume
     for j in demand_nodes:
         for t in months:
             m.addConstr(
@@ -662,7 +694,7 @@ for y in years:
 
     ############## PENALTY FUNCTION CONSTRAINTS #######################
 
-    # The shortage function that regulates nodes meeting demands is hacked to prevent duplicated undirected network flows from being counted as supplies
+    # Calculate shortages
     for j in demand_nodes:
         for t in months:
             m.addConstr(
@@ -686,7 +718,7 @@ for y in years:
                  b = 0  # dummy fill to make it skip the calibration step for Pac Ocean inflows- calibrated below
             else:
                 m.addConstr(
-                    quicksum(flow[i,j,t] for i,j in links.select(i,'*')) >= 0.95 * sur_calib_inflow[i,y,t],
+                    quicksum(flow[i,j,t] for i,j in links.select(i,'*')) >= 0.5 * sur_calib_inflow[i,y,t],
                         'calib2-inflow_low-%s-%s' % (i,t))
                 m.addConstr(
                     quicksum(flow[i,j,t] for i,j in links.select(i,'*')) <= 1.25 * sur_calib_inflow[i,y,t],
@@ -699,10 +731,12 @@ for y in years:
            if j == 'SUR_PAC':
                for t in months:
                    m.addConstr(
-                       quicksum(flow[i,j,t] for i,j in links.select(i,j) for t in months for i in pac_river_inflows) >= 0.5 * sur_calib_inflow[j,y,t],
+                       #quicksum(flow[i,j,t] for i,j in links.select(i,j) for t in months for i in pac_river_inflows) >= 0.95 * sur_calib_inflow[j,y,t],
+                       quicksum(flow[i,j,t] for i,j in links.select(i,j) for i in pac_river_inflows) >= 0.75 * sur_calib_inflow[j,y,t],
                            'calib2-inflow_low-%s-%s' % (j,t))
                    m.addConstr(
-                       quicksum(flow[i,j,t] for i,j in links.select(i,j) for t in months for i in pac_river_inflows) <= 1.25 * sur_calib_inflow[j,y,t],
+                       #quicksum(flow[i,j,t] for i,j in links.select(i,j) for t in months for i in pac_river_inflows) <= 1.25 * sur_calib_inflow[j,y,t],
+                       quicksum(flow[i,j,t] for i,j in links.select(i,j) for i in pac_river_inflows) <= 1.25 * sur_calib_inflow[j,y,t],
                            'calib2-inflow_high-%s-%s' % (j,t))
 
     # WWTP calibration node constraints
@@ -719,18 +753,12 @@ for y in years:
 
     #### Objective Functions ####
 
-    # Set Objective: Minimize sum of supply costs and damages from shortages
-    m.setObjective(quicksum(cost[i,j,t] for i,j in links for t in months) -
-                   quicksum(damage[j,t] for j in nodes for t in months),
+    # Set Objective: Minimize sum of supply costs, no damages or shortages
+    m.setObjective(quicksum(cost[i,j,t] for i,j in links for t in months) +
+                   quicksum(damage[j,t] for j in nodes for t in months) -
+                   quicksum(penalty[j,t] for j in nodes for t in months) -
+                   quicksum(benefits[i,j,t] for i,j in links for t in months),
                     GRB.MINIMIZE)
-
-    # Set Objective: Minimize sum of supply costs and damages from shortages
-    m.setObjective(quicksum(damage[j,t] for j in nodes for t in months) -
-                    quicksum(cost[i,j,t] for i,j in links for t in months),
-                    GRB.MAXIMIZE)
-
-    # Feasibility tolerance parameter to work through a model on edge of feasibility #
-    #m.setParam(GRB.Param.FeasibilityTol, 1e-05)
 
     m.optimize()
 
@@ -754,9 +782,6 @@ for y in years:
     shortages = m.getAttr('X', shortage)
     constraint = m.getConstrs()
 
-    print "costs",cost_solution
-    print "damages",damage_solution
-
     shadows = tablib.Dataset()
     for i in range(len(constraint)):
         shadow = [constraint[i].getAttr("ConstrName"),constraint[i].getAttr("Pi"),constraint[i].getAttr("IISConstr")]
@@ -767,6 +792,7 @@ for y in years:
         for t in months:
             value_in = quicksum(solution[i,j,t] for i,j in links.select('*',j))
             value_out = quicksum(solution[j,k,t] for j,k in links.select(j,'*'))
+            cost_print = quicksum(cost_solution[i,j,t] for i,j in links.select('*',j))
             if t == 'Jan':
                 if y == '1996':
                     supplies_txt_full[j,y,t] = value_in.getValue()
@@ -855,10 +881,17 @@ for y in years:
 
     for i in nodes:
         for j in nodes:
-            if all([i == 'WRP_HYP', j == 'WRP_LIT']):
+            if all([i == 'WRP_HYP', any([j == 'WRP_LIT', j == 'MWD_WCR'])]):
                 for t in months:
                     value = quicksum(flow[i,j,t] for i,j in links.select(i,j) for t in months)
                 hyperion_recycled[y] = value.getValue()
+
+    for i in nodes:
+        for j in nodes:
+            if all([i == 'WRP_JWP', any([j == 'INF_WHR', j == 'MWD_WCR'])]):
+                for t in months:
+                    value = quicksum(flow[i,j,t] for i,j in links.select(i,j) for t in months)
+                jwpcp_recycled[y] = value.getValue()
 
     for j in nodes:
         if j == 'MWD_MET':
@@ -942,21 +975,6 @@ for y in years:
                     value = quicksum(flow[i,j,t] for i,j in links.select('*',j))
         ocean_inflows_month[y,t] = value.getValue()
 
-    # PRINT OUTPUT FOR TROUBLESHOOTING
-    # for i,j in links:
-    #     for t in months:
-    #         if j == 'WRP_WHP':
-    #            print y,t,(flow[i,j,t])
-    #         if i == 'WRP_WHP':
-    #            print y,t,(flow[i,j,t])
-    #
-    # for j in nodes:
-    #     for t in months:
-    #         if j == 'WRP_WHP':
-    #             print y,t,inflow[j,y,t]
-    #             print y,t,losses[j,t]
-    #             print y,t,storage[j,t]
-
 # Write text files with data combined from all years
 for j in nodes:
     demands = []
@@ -1035,6 +1053,7 @@ recycled_month_txt = []
 reuse_txt = []
 reuse_month_txt = []
 hyperion_recycled_txt = []
+jwpcp_recycled_txt = []
 swp_to_lacity_txt = []
 barrier_injection_txt = []
 msg_import_recharge_txt = []
@@ -1054,6 +1073,7 @@ for y in years:
     recycled_txt.insert(len(recycled_txt),recycled[y])
     reuse_txt.insert(len(reuse_txt),reuse[y])
     hyperion_recycled_txt.insert(len(hyperion_recycled_txt),hyperion_recycled[y])
+    jwpcp_recycled_txt.insert(len(jwpcp_recycled_txt),jwpcp_recycled[y])
     swp_to_lacity_txt.insert(len(swp_to_lacity_txt),swp_to_lacity[y])
     barrier_injection_txt.insert(len(barrier_injection_txt),barrier_injection[y])
     msg_import_recharge_txt.insert(len(msg_import_recharge_txt),msg_import_recharge[y])
@@ -1079,6 +1099,7 @@ print >> f11, "ocean_inflows", (" ".join( repr(e) for e in ocean_inflows_txt))
 print >> f11, "shortages", (" ".join( repr(e) for e in shortages_file_txt))
 print >> f11, "surface_supplies", (" ".join( repr(e) for e in surface_supplies_txt))
 print >> f11, "swp_to_lacity", (" ".join( repr(e) for e in swp_to_lacity_txt))
+print >> f11, "jwpcp_recycled", (" ".join( repr(e) for e in jwpcp_recycled_txt))
 
 for y in years:
     for t in months:
@@ -1101,48 +1122,8 @@ print >> f12, "imported_use", (" ".join( repr(e) for e in imported_use_month_txt
 print >> f12, "ocean_inflows", (" ".join( repr(e) for e in ocean_inflows_month_txt))
 
 #### Use tablib to write out Excel file with constraints, shadows, and IIS includes
-# shadows.headers = ['Constraint','Shadow Value','Included in IIS?']
-# with open(fname_out4, 'wb') as f:
-#    f.write(shadows.xlsx)
+shadows.headers = ['Constraint','Shadow Value','Included in IIS?']
+with open(fname_out4, 'wb') as f:
+   f.write(shadows.xlsx)
 
-
-###### TROUBLESHOOTING #######
-
-# for j in storage_pumpers:
-#    for y in years:
-#        for t in months:
-#            print j,y,t,direct_supply[j,y,t],pools_supply[j,y,t]
-
-# print 'break'
-#
-# for i,j in links:
-#     for y in years:
-#         for t in months:
-#             if j == 'CTY_LAX':
-#                print y,t,(flow[i,j,t])
-#             if i == 'CTY_LAX':
-#                print y,t,(flow[i,j,t])
-#
-# for i,j in links:
-#     for y in years:
-#         for t in months:
-#             if j == 'GWB_SFE':
-#                print y,t,(flow[i,j,t])
-#             if i == 'GWB_SFE':
-#                print y,t,(flow[i,j,t])
-#
-# for j in nodes:
-#     for y in years:
-#         for t in months:
-#             if j == 'GWB_SFE':
-#                 print y,t,inflow[j,y,t]
-#                 print y,t,losses[j,t]
-#                 print y,t,storage[j,t]
-
-
-
-# print 'break'
-#
-
-###### END TROUBLESHOOTING #######
 

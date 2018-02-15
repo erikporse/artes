@@ -1,0 +1,15 @@
+Artes Model: Version D1 & D2, Economic Assessment with Least-Cost Optimization
+February 10, 2018
+c. Erik Porse, 2016-2018
+
+Name Key:
+AFS = Annual Foresight
+PFS = Perfect Foresight
+
+DHSI = Health, Safety, and Industry demands
+SXX = % of historic imported water supplies avialable
+
+Model is associated with the following study. Please cite when using code or associated data:
+
+Porse, Erik, Kathryn B. Mika, Elizaveta Litvak, Kimberly Manago, Terri Hogue, Mark Gold, Diane Pataki, and Stephanie Pincetl. (Under Review).
+“The Dollars and Sense of Local Water Supplies in Los Angeles.” 

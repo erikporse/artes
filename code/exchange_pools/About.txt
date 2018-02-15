@@ -1,0 +1,16 @@
+Artes Model: Version B2, Groundwater Exchange Pools
+February 10, 2018
+c. Erik Porse, 2016-2018
+
+Name Key:
+NSP = No Shortage Pools
+SP = Shortage Pools
+
+DXX = % of demands, based on 100% of 2010 values (ex. D80)
+SXX = % of supplies, based on 100% historic imported supplies (ex. S80)
+
+Model is associated with the following study. Please cite when using code or associated data:
+
+Porse, Erik, Kathryn B. Mika, Rhianna Williams, Mark Gold, William Blomquist, Stephanie Pincetl, 
+"Groundwater Exchange Pools and Urban Water Supply Sustainability: Modeling Directed and Undirected Networks"
+Journal of Water Resources Planning and Management (In Press).
