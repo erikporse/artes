@@ -16,13 +16,13 @@ Terri Hogue and Kimberly Manago at the [Hogue Hydrology Group](http://inside.min
 Diane Pataki and Liza Litvak at the [Urban Ecology Lab](http://bioweb.biology.utah.edu/pataki/), University of Utah<br>
 
 ### What's Here
-The repository contains source code, model data, and a descriptive manual of the model.
+The repository contains source code, data, and a descriptive manual of the model.
 
 _Manual_<br>
 Documentation on model operations, development, and workflow.
 
 _Code_<br>
-- Model source code for the JWRPM study referenced below. Scripted in Python, it builds the model, interacts with the solver, and manages inputs and outputs. (LASM_31Dec16.py). <br>
+- Model source code, including multiple versions used in studies for various applications (on-going). Scripted in Python, the code builds the model, interacts with the solver, and manages inputs and outputs. (LASM_31Dec16.py, for example). <br>
 - Scripts for aggregating sub-watersheds from the WMMS hydrologic model to the sub-watershed zones used in Artes (Located in Hydrology folder)
 - R scripts for plotting watershed and wastewater treatment plant outflows for comparing and calibrating (Plots.r)
 
@@ -43,6 +43,6 @@ _Geo_
 This work was supported by the Water Sustainability, & Climate Program at the National Science Foundation (NSF Award # 1204235), the Los Angeles Bureau of Sanitation, and the John Randolph Haynes and Dora Haynes Foundation. 
 
 ### Citing Research and the Model
-Porse, Erik C., Kathryn B. Mika, Elizabeth Litvak, Kim Manago, Kartiki Naik, Madelyn Glickfeld, Terri Hogue, Mark Gold, Diane Pataki, and Stephanie Pincetl. “Systems Analysis and Optimization of Local Water Supplies in Los Angeles.” _Journal of Water Resources Planning and Management_. (In Press)
+Porse, Erik, Kathryn B. Mika, Elizaveta Litvak, Kimberly F. Manago, Kartiki Naik, Madelyn Glickfeld, Terri S. Hogue, Mark Gold, Diane E. Pataki, and Stephanie Pincetl10. "Systems Analysis and Optimization of Local Water Supplies in Los Angeles." Journal of Water Resources Planning and Management. Vol. 143, no. 9 (2017).
 
 Porse, Erik C., Artes: A Model of Urban Water Resources Management in Los Angeles. UCLA California Center for Sustainable Communities, Los Angeles, CA, 2017; URL: https://erikporse.github.io/artes/.
