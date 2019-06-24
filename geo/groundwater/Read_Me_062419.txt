@@ -1,0 +1,20 @@
+California Center for Sustainable Communities at UCLA
+Erik Porse
+c. 2019
+
+This folder contains groundwater-related files used in studies with Artes or in developing the LA Water Hub
+The groundwater basin shape files are used for visualizing data on the LA Water Hub (http://waterhub.ucla.edu)
+
+Complete groundwater basin shape file repositories for LA County were derived from two locations: 
+1) LA County GIS Database
+2) DWR Bulletin 118
+
+Both are mapped on the Water Hub and included here.
+
+The shape file data with jurisdictional boundaries is provided for the Water Replenishment District of Southern California
+
+Shape files are also available from Watermasters of each adjudicated groundwater area.
+
+Finally, shape files are included for:
+1) groundwater wells (point files) associated with public water system retailers in LA County. These are provided as a .csv file
+2) Spreading grounds managed by LA County 

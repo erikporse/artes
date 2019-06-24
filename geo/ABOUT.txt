@@ -1,4 +1,4 @@
-**********************************************
+﻿**********************************************
 *
 * Shape files for the Artes model
 * Datasets are described below
@@ -23,4 +23,4 @@ This is the minimum set of watersheds for LA County necessary to model major inf
 2) Agencies
 - two shape files included as used in our LA Water Hub maps
 - “MWD_members” is the shape file for MWD member agencies in LA County
-- “water_hub_retailers” is the shape file for metropolitan LA County water retailers used in the Artes model and shown via the Water Hub, with associated attributes from available data.
+- “water_hub_retailers” is the shape file for metropolitan LA County water retailers used in the Artes model and shown via the Water Hub, with associated attributes from available data.; 3) Groundwater management, including boundaries for groundwater basins, the jurisdictional boundary for the Water Replenishment District of Southern California; groundwater pumping well locations associated with public water systems, and 4) spreading ground locations.
