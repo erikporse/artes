@@ -13,7 +13,7 @@ Both are mapped on the Water Hub and included here.
 
 The shape file data with jurisdictional boundaries is provided for the Water Replenishment District of Southern California
 
-Shape files are also available from Watermasters of each adjudicated groundwater area.
+Shape files are also available from Watermasters of each adjudicated groundwater area. These were collected between 2012-2014
 
 Finally, shape files are included for:
 1) groundwater wells (point files) associated with public water system retailers in LA County. These are provided as a .csv file
