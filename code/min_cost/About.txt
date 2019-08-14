@@ -1,5 +1,5 @@
-Artes Model: Version D1 & D2, Economic Assessment with Least-Cost Optimization
-February 10, 2018
+Artes Model: Versions D1 1& D2 Economic Assessment with Least-Cost Optimization
+Posted February 10, 2018
 c. Erik Porse, 2016-2018
 
 Name Key:
@@ -9,7 +9,27 @@ PFS = Perfect Foresight
 DHSI = Health, Safety, and Industry demands
 SXX = % of historic imported water supplies avialable
 
-Model is associated with the following study. Please cite when using code or associated data:
+Model is associated with the following studies. Please cite when using code or associated data:
 
-Porse, Erik, Kathryn B. Mika, Elizaveta Litvak, Kimberly Manago, Terri Hogue, Mark Gold, Diane Pataki, and Stephanie Pincetl. (Under Review).
-“The Dollars and Sense of Local Water Supplies in Los Angeles.” 
+Porse, Erik, Kathryn B. Mika, Elizaveta Litvak, Kimberly Manago, Terri Hogue, Mark Gold, Diane Pataki, and Stephanie Pincetl. (2018).
+“The Dollars and Sense of Local Water Supplies in Los Angeles.” Nature Sustainability. 1 (6). 289.
+
+Porse, Erik, and Stephanie Pincetl. "Effects of stormwater capture and use on urban streamflows." Water Resources Management 33.2 (2019): 713-723.
+
+
+
+Artes Model: Versions E1-11 Least-Cost Optimization that evaluates energy use
+Posted August 14, 2019
+c. Erik Porse, 2017-2019
+
+Name Key:
+AFS = Annual Foresight
+PFS = Perfect Foresight
+
+DHSI = Health, Safety, and Industry demands
+SXX = % of historic imported water supplies avialable
+
+Model is associated with the following studies. Please cite when using code or associated data:
+
+Porse, Erik, Kathryn B. Mika, Alvar Escriva-Bou, Eric Fournier, Kelly T. Sanders, Jennifer Stokes-Draut, Felicia Federico, Mark Gold, Stephanie Pincetl. 
+"Systems Analysis of Energy Use for Urban Water Management by Utilities and Households". (Under Review). 
