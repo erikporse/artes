@@ -1,4 +1,4 @@
-##################################################################################
+﻿##################################################################################
 #
 # Artes: Modeling Water Management in Los Angeles for Local Water Supplies
 #
@@ -41,12 +41,9 @@ import matplotlib.dates as mdates
 
 from gurobipy import *
 
-fname_in = '/Users/eporse/Documents/Research/Ecology_Energy_Climate/Water Resources/Countries and Regions/California/Southern California/Systems Analysis/Artes Model/Model Runs/B3_03_30_17/LASM_Data_D100_S0_SP_B3.xlsx'
-fname_out1 = '/Users/eporse/Documents/Research/Ecology_Energy_Climate/Water Resources/Countries and Regions/California/Southern California/Systems Analysis/Artes Model/Output/LASM_FlowsRaw_Out.xlsx'
-fname_out2 = '/Users/eporse/Documents/Research/Ecology_Energy_Climate/Water Resources/Countries and Regions/California/Southern California/Systems Analysis/Artes Model/Output/LASM_StoragesRaw_Out.xlsx'
-fname_out3 = '/Users/eporse/Documents/Research/Ecology_Energy_Climate/Water Resources/Countries and Regions/California/Southern California/Systems Analysis/Artes Model/Output/LASM_Supplies_Out.xlsx'
-fname_out4 = '/Users/eporse/Documents/Research/Ecology_Energy_Climate/Water Resources/Countries and Regions/California/Southern California/Systems Analysis/Artes Model/Output/Shadows.xlsx'
-path = '/Users/eporse/Documents/Research/Ecology_Energy_Climate/Water Resources/Countries and Regions/California/Southern California/Systems Analysis/Artes Model/Output'
+fname_in = <systems model data location>/LASM_Data_DHSI_S50_G1.xlsx'
+fname_out4 = <output files location>/Shadows.xlsx'
+path = <output files location>
 
 # Initialize dictionaries (arrays) and vectors
 nodes = []
