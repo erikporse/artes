@@ -1,0 +1,132 @@
+##################################################################################
+#
+# An algorithm to develop a predictive model for estimating risk of water leaks
+# in an urban water supply distribution network. 
+#
+# Written by: Qing Shuang
+# December 2019
+#
+# Permission and use permitted with attribution.
+# Creative Commons Attribution 4.0 International License
+#
+# Citiation: Shuang et al (under review) "Clustering Analysis and Predictive Modeling 
+#   of Failure Risk from Leaks in Urban Water Distribution Systems". 
+#   Journal of Water Resources Planning and Management. 
+#
+##################################################################################
+
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+
+# 2013 Predication Scenario
+LF = pd.read_csv(<filename>)
+LC = pd.read_csv(<filename>)
+LF_2013 = pd.read_csv(<filename>)
+LC_2013 = pd.read_csv(<filename>)
+
+X = np.array(LF)
+y = np.ravel(np.array(LC))
+X_test = np.array(LF_2013)
+y_test = np.ravel(np.array(LC_2013))
+
+# Logistic Regression
+from sklearn.linear_model import LogisticRegression
+log_model = LogisticRegression(solver='lbfgs', max_iter=3000) 
+log_model.fit(X,y) 
+
+# Stochastic Gradient Descent 
+from sklearn.linear_model import SGDClassifier
+sgd_model = SGDClassifier()
+sgd_model.fit(X,y)
+
+# Decision Tree
+from sklearn.tree import DecisionTreeClassifier
+tree_model = DecisionTreeClassifier()
+tree_model.fit(X,y)
+
+# Support Vector Machine
+from sklearn.svm import SVC
+SVC_model = SVC(gamma='auto')
+SVC_model.fit(X,y)
+
+# Random Forest
+from sklearn.ensemble import RandomForestClassifier
+rf_model = RandomForestClassifier()
+rf_model.fit(X,y) 
+
+# Bagging
+from sklearn.ensemble import BaggingClassifier
+from sklearn.tree import DecisionTreeClassifier
+bag_model = BaggingClassifier(DecisionTreeClassifier(), bootstrap=True) 
+bag_model.fit(X,y)
+
+# AdaBoost
+from sklearn.ensemble import AdaBoostClassifier
+ada_model = AdaBoostClassifier(DecisionTreeClassifier(), algorithm="SAMME.R")
+ada_model.fit(X,y)
+
+# GradientBoostingClassifier
+from sklearn.ensemble import GradientBoostingClassifier
+gbdt_model = GradientBoostingClassifier()
+gbdt_model.fit(X, y)               
+
+
+# Model training and cross-validation
+from sklearn.metrics import (brier_score_loss, precision_score, recall_score, f1_score, roc_auc_score)
+from sklearn.model_selection import cross_val_score
+from sklearn.model_selection import ShuffleSplit
+cvcc=ShuffleSplit (n_splits=10, test_size=0.2, random_state=0) 
+model = ["sgd_model", "log_model", "tree_model", "svm_model", "rf_model", "bag_model", "ada_model", "gbdt_model"]
+n_model = len(model)
+tra_scores = []
+for i in range(n_model):
+    eval(model[i]).fit(X,y)
+    train_score = eval(model[i]).score(X,y)
+    tra_scores.append(train_score)
+    scores = cross_val_score(eval(model[i]), X,y, cv=cvcc, scoring='f1') #f1, roc_auc
+    cvss_scores_mean.append(scores.mean())
+    cvss_scores_std.append(scores.std())
+print("tra_scores: ", tra_scores)
+print("cvss_scores_mean: ", cvss_scores_mean)
+
+
+# Hyper-parameter optimization
+# Take n_estimators in Random Forest as an example
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import GridSearchCV
+param_test1 = {'n_estimators':range(10,151,1)}
+gsearch1 = GridSearchCV(estimator =RandomForestClassifier(),param_grid = param_test1, scoring='f1',cv=5)
+gsearch1.fit(X,y)
+gsearch1.best_score_, gsearch1.best_params_
+
+
+# Model testing and evaluation
+# Take Random Forest as an example
+from sklearn.metrics import (brier_score_loss, precision_score, recall_score, f1_score, roc_auc_score)
+y_pred = rf1.predict(X_test)
+if hasattr(rf1, "predict_proba"):
+            prob_pos = rf1.predict_proba(X_test)[:, 1]
+else:  # use decision function
+            prob_pos = rf1.decision_function(X_test)
+            prob_pos = \
+                (prob_pos - prob_pos.min()) / (prob_pos.max() - prob_pos.min())
+bri_score = brier_score_loss(y_test, prob_pos, pos_label=y.max())
+pre_s = precision_score(y_test, y_pred)
+rec_s = recall_score(y_test, y_pred)
+f1_s = f1_score(y_test, y_pred)
+roc_score = roc_auc_score(y_test, y_pred)
+print("precision_scores: ", pre_s)
+print("recall_scores: ", rec_s)
+print("f1_scores: ", f1_s)
+print("roc_scores: ", roc_score)
+print("brier_scores: ", bri_score)
+
+
+# Key features extraction
+rfecv = RFECV(estimator=gbdt_best, step=1, cv=10, scoring='f1')
+rfecv.fit(X, y)
+rfecv.n_features_ 
+rfecv.support_
+rfecv.ranking_
+rfecv.grid_scores_
